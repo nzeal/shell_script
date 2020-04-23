@@ -1,0 +1,18 @@
+CC = gcc
+
+CCFLAGS = -m64 -O3 -march=native -mtune=native -mcmodel=large -fopenmp -DSTREAM_ARRAY_SIZE=536895856
+
+NAME = stream.out
+
+SFILES = stream.o
+
+all:$(SFILES)
+	$(CC) $(CCFLAGS) $(SFILES) -o $(NAME)
+
+%.o:%.c
+	$(CC) -c $< $(CCFLAGS) 
+		
+clean:
+	rm -f $(NAME) *.mod *.o
+
+
